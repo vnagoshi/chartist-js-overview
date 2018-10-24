@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chartist.js Overview</title>
+    <meta chartset="UTF-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Chartist.js -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="container py-5">
+        <h1>Chartist.js</h1>
+        <p>Chartist.js is a light-weight charting utility</p>
+        <ul>
+          <li>Charts are built as SVG images</li>
+          <li>Chart content is handled via JS, styling is handled by CSS</li>
+          <li>Support for animating chart components</li>
+          <li>Chartist is designed to be fully responsive</li>
+          <li>Appealing default layout with complete freedom to change chart styling</li>
+          <li>Base functionality works on all major browsers</li>
+        </ul>
+        <p>Available at <a href="https://gionkunz.github.io/chartist-js/index.html" target=_blank>https://gionkunz.github.io/chartist-js/index.html</a></p>
+      </div>
+    </div>
+
+    <div class="container-fluid bg-secondary py-5">
+      <div class="container">
+        <div class="row">
+          <h2 class="mx-auto text-light">Chartist.js supports 3 major types of charts</h2>
+        </div>
+        <div class="row py-2">
+          <div class="col-md-4">
+            <h4 class="text-center text-light">Line Charts</h4>
+            <div class="card p-2">
+              <div class="ct-chart ct-golden-section" id="ct-line"></div>
+              <script>
+              new Chartist.Line('#ct-line', {
+                labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+                series: [
+                  [12, 9, 7, 8, 5],
+                  [2, 1, 3.5, 7, 3],
+                  [1, 3, 4, 5, 6]
+                ]
+              }, {
+                fullWidth: true,
+                chartPadding: {
+                  right: 40
+                }
+              });
+              </script>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <h4 class="text-center text-light">Bar Charts</h4>
+            <div class="card p-2">
+              <div class="ct-chart ct-golden-section" id="ct-bar"></div>
+              <script>
+              var data = {
+                labels: ['W1', 'W2', 'W3', 'W4', 'W5', 'W6', 'W7', 'W8', 'W9', 'W10'],
+                series: [
+                  [1, 2, 4, 8, 6, -2, -1, -4, -6, -2]
+                ]
+              };
+              var options = {
+                high: 10,
+                low: -10,
+                axisX: {
+                  labelInterpolationFnc: function(value, index) {
+                    return index % 2 === 0 ? value : null;
+                  }
+                }
+              };
+              new Chartist.Bar('#ct-bar', data, options);
+              </script>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <h4 class="text-center text-light">Pie Charts</h4>
+            <div class="card p-2">
+              <div class="ct-chart ct-golden-section" id="ct-pie"></div>
+              <script>
+              var data_pie = {
+                series: [5, 3, 4]
+              };
+              var sum_pie = function(a, b) { return a + b };
+              new Chartist.Pie('#ct-pie', data_pie, {
+                labelInterpolationFnc: function(value) {
+                  return Math.round(value / data_pie.series.reduce(sum_pie) * 100) + '%';
+                }
+              });
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container-fluid">
+      <div class="container py-5">
+        <div class="row">
+          <div class="col-md-4">
+            <h2 class="text-center">Setting up Chartist.js</h2>
+          </div>
+          <div class="col-md-8">
+            <h4>Download with Bower</h4>
+            <div class="card bg-light p-2">
+              <code>bower install chartist --save</code>
+            </div>
+            <br>
+            <h4>CDN</h4>
+            <div class="card bg-light p-2">
+              <code>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css"&gt;</code>
+              <code>&lt;script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"&gt;&lt;/script&gt;</code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container-fluid bg-secondary">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5 py-5">
+            <h2 class="text-light pb-5">A simple line chart built with Chartist.js</h2>
+            <div class="card bg-light p-2">
+              <code>&lt;div class="ct-chart ct-golden-section"&gt;&lt;/div&gt;</code>
+              <code>&lt;script&gt;</code>
+              <code class="text-dark">var data = {</code>
+              <code class="text-dark">&nbsp;&nbsp;labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],</code>
+              <code class="text-dark">&nbsp;&nbsp;series: [</code>
+              <code class="text-dark">&nbsp;&nbsp;&nbsp;&nbsp;[5, 2, 4, 2, 0]</code>
+              <code class="text-dark">&nbsp;&nbsp;]</code>
+              <code class="text-dark">};</code>
+              <code class="text-dark">new Chartist.Line('.ct-chart', data);</code></pre>
+              <code>&lt;/script&gt;</code>
+            </div>
+          </div>
+          <div class="col-md-7 p-5">
+            <div class="card py-2">
+              <div class="ct-chart ct-golden-section" id="ct-sample"></div>
+                <script>
+                var data = {
+                  labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+                  series: [
+                    [5, 2, 4, 2, 0]
+                  ]
+                };
+                new Chartist.Line('#ct-sample', data);
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container-fluid">
+      <div class="container py-5">
+        <h2>Extended Functionality</h2>
+        <p>There are a number of plugins for Chartist that expand on its charting functionalities</p>
+        <ul>
+          <li>Accessability Plugin</li>
+          <li>Tooltip Plugin</li>
+          <li>Zoom Plugin</li>
+          <li>Axis Title Plugin</li>
+          <li>Threshold Plugin</li>
+        </ul>
+        <p>Chartist Plugins with examples are listed on the <a href="https://gionkunz.github.io/chartist-js/plugins.html" target=_blank>Chartist.js website</a></p>
+      </div>
+    </div>
+    
+  </body>
+</html>
